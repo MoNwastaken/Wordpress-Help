@@ -1,0 +1,31 @@
+If you don't have a custom logo option go to your theme folder
+
+open functions.php
+
+add this line:
+add_theme_support( 'custom-logo' );
+
+
+When enabling custom logo support, you can configure five parameters by passing along arguments to the add_theme_support() function using an array:
+
+function themename_custom_logo_setup() {
+ $defaults = array(
+ 'height'      => 100,
+ 'width'       => 400,
+ 'flex-height' => true,
+ 'flex-width'  => true,
+ 'header-text' => array( 'site-title', 'site-description' ),
+ );
+ add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+
+
+displaying the logo:
+the_custom_logo()   
+OR
+if ( function_exists( 'the_custom_logo' ) ) {
+ the_custom_logo();
+}
+
+Generally logos are added to the header.php file of the theme, but it can be elsewhere as well.
